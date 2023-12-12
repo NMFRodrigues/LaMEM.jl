@@ -2,7 +2,7 @@
 #
 # Some wrappers around GMG routines
 
-import GeophysicalModelGenerator: AddBox!, AddSphere!, AddEllipsoid!, AddCylinder!, AboveSurface, BelowSurface
+import GeophysicalModelGenerator: AddBox!, AddSphere!, AddEllipsoid!, AddCylinder!, AddSubductingTip!, AddPassiveTracers!, AddPolygon!, AboveSurface, BelowSurface
 export AboveSurface!, BelowSurface!
 
 """
@@ -17,6 +17,11 @@ See the documentation of the GMG routine
 """
 AddBox!(model::Model; kwargs...) = AddBox!(model.Grid.Phases, model.Grid.Temp, model.Grid.Grid; kwargs...) 
 
+AddSubductingTip!(model::Model; kwargs...) = AddSubductingTip!(model.Grid.Phases, model.Grid.Temp, model.Grid.Grid; kwargs...) 
+
+AddPassiveTracers!(model::Model; kwargs...) = AddPassiveTracers!(model.Grid.Phases, model.Grid.Grid; kwargs...) 
+
+AddPolygon!(model::Model; kwargs...) = AddPolygon!(model.Grid.Phases, model.Grid.Temp, model.Grid.Grid; kwargs...) 
 
 """
     AddSphere!(model::Model; cen=Tuple{3}, radius=Tuple{1}, phase = ConstantPhase(1), T=nothing)
